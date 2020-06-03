@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgapps"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".Activities.NavDrawer"
+    >
+
+    <RelativeLayout
+    android:layout_weight="2.5"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+    <TextView
+        android:id="@+id/db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:text="Dashboard"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/dashboard_welcomtext"
+        android:layout_below="@+id/db"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome: "
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"></TextView>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/db_img_view"
+        android:layout_margin="12sp"
+        android:layout_alignEnd="@id/dashboard_welcomtext"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="No Image"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/updateimg"
+
+        />
+
+</RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:columnOrderPreserved="false"
+        android:orientation="horizontal"
+        android:padding="14dp"
+
+
+        android:rowCount="3">
+        <!-- row 1 -->
+        <!-- column 1 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_notifications"
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/notification"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notifications"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- column 2 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_Chats"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/chat"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="    Chats"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    ></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- row 2 -->
+        <!-- column 1 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mLost"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/lost"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lost and Found"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- column 2 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_Events"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/kidsevent"></ImageView>
+
+                <TextView
+                    android:id="@+id/mEventsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   Events"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    ></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- row 3 -->
+        <!-- column 1 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_admin2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/add"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Notifications"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- column 2 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dashboard_admin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+
+
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/contactlist"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   Users"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    ></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </GridLayout>
+</LinearLayout>

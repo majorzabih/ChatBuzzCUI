@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zabih.chatBuzz">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.AddlostDataShow" />
+        <activity android:name=".Activities.LostFounDViewpager" />
+        <activity android:name=".Activities.AdvertisemnetDataShow" />
+        <activity android:name=".Activities.UpoadFIle" />
+        <activity android:name=".Activities.AdvertismentDIffernetDAta" />
+        <activity
+            android:name=".Activities.NavDrawer"
+            android:label="@string/title_activity_nav_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.ActivityShow" />
+        <activity
+            android:name=".Activities.DataFeatures"
+            android:label="Data Showing"
+            android:parentActivityName=".Activities.EventData"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.EventData" />
+        </activity>
+        <activity
+            android:name=".Activities.ChangePassword"
+            android:label="Data Showing"
+            android:parentActivityName=".Activities.NavDrawer"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.NavDrawer" />
+        </activity>
+        <activity
+            android:name=".Activities.Chat"
+            android:label="Chat"
+            android:parentActivityName=".Activities.Dashboard"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Dashboard" />
+        </activity>
+        <activity
+            android:name=".Activities.EventsShow"
+            android:label="Events"
+            android:parentActivityName=".Activities.Dashboard"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Dashboard" />
+        </activity>
+        <activity
+            android:name=".Activities.LosdFound"
+            android:label="lost and Found"
+            android:parentActivityName=".Activities.Dashboard"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Dashboard" />
+        </activity>
+        <activity
+            android:name=".Activities.EventData"
+            android:label="Announcment"
+            android:parentActivityName=".Activities.Dashboard"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Dashboard" />
+        </activity>
+        <activity
+            android:name=".Activities.Admin"
+            android:label="Admin"
+            android:parentActivityName=".Activities.Admin"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Admin" />
+        </activity>
+        <activity
+            android:name=".Activities.EventActivity"
+            android:label="Events"
+            android:parentActivityName=".Activities.Admin"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Admin" />
+        </activity>
+        <activity
+            android:name=".Activities.ProfileUpdate"
+            android:label="ChangeProfile"
+            android:parentActivityName=".Activities.NavDrawer"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.NavDrawer" />
+        </activity>
+        <activity
+            android:name=".Activities.Advertisement"
+            android:label="Advertisement"
+            android:parentActivityName=".Activities.Dashboard"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zabih.chatBuzz.Activities.Dashboard" />
+        </activity>
+        <activity android:name=".Activities.GroupChatActivity" />
+        <activity android:name=".Activities.ChatRoom" />
+        <activity android:name=".Activities.FacultyListActivity" />
+        <activity android:name=".Activities.VerifyPhoneActivitty" />
+        <activity android:name=".Activities.AddLost" />
+        <activity android:name=".Activities.AdminChatActivity" />
+        <activity android:name=".Activities.PhoneAuth" />
+        <activity android:name=".Activities.SignIn">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".Activities.SignUp" />
+        <activity android:name=".Activities.Dashboard" />
+
+        <service android:name=".Activities.service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Activities.service.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
