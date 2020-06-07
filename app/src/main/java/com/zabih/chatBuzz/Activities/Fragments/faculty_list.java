@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class faculty_list extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference userRef = database.getReference("users");
-    private Button mSearchBtn;
+    private ImageButton mSearchBtn;
     EditText mSearchBar;
 
     private FirebaseRecyclerAdapter<UserModel, UserViewHolder> mAdapter;

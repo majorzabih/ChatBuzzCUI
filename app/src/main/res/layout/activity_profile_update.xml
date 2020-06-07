@@ -19,6 +19,7 @@
         />
 
     <TextView
+        android:drawableLeft="@drawable/ic_action_username"
         android:textAllCaps="true"
         android:id="@+id/signUp_username"
         android:layout_width="match_parent"
@@ -30,6 +31,7 @@
         android:textSize="18sp" />
 
     <TextView
+        android:drawableLeft="@drawable/ic_action_email"
         android:id="@+id/signUp_email"
         android:textAllCaps="true"
         android:layout_width="match_parent"
@@ -44,6 +46,7 @@
     <EditText
         android:id="@+id/cp"
         android:ems="10"
+        android:drawableLeft="@drawable/ic_action_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signUp_email"
@@ -60,6 +63,7 @@
     <EditText
         android:ems="10"
         android:id="@+id/np"
+        android:drawableLeft="@drawable/ic_action_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cp"
@@ -81,20 +85,55 @@
         android:layout_margin="10dp"
 android:ems="10"
         android:textAllCaps="true"
+        android:drawableLeft="@drawable/ic_action_pass"
         android:hint="Confirm-Password"
         android:inputType="textPassword"
         android:textSize="18sp" />
 
 
-    <Button
-        android:id="@+id/signUp_submitBtn"
-        android:layout_width="wrap_content"
+<!--    <Button-->
+<!--        android:id="@+id/signUp_submitBtn"-->
+<!--        android:layout_width="wrap_content"-->
 
-        android:layout_height="wrap_content"
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/ccp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:text="Update" />-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/signUp_submitBtn"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/ccp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="Update" />
+        android:clickable="true"
+        app:cardBackgroundColor="#2c318c"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textAlignment="center"
+
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 
 
 

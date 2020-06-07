@@ -2,6 +2,7 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import com.zabih.chatBuzz.R;
 
 public class ChangePassword extends AppCompatActivity {
 EditText psd,re_psd,curreent_password;
-Button update;
+CardView update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

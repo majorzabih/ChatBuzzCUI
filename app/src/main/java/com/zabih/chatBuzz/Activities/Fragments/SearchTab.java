@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -38,7 +39,7 @@ public class SearchTab extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference userRef = database.getReference("users");
     private EditText mSearchBar;
-    private Button mSearchBtn;
+    private ImageButton mSearchBtn;
     private RecyclerView mRecyclerView;
     private FirebaseRecyclerAdapter<UserModel, UserViewHolder> mAdapter;
 

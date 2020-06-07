@@ -2,6 +2,8 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.app.DatePickerDialog;
@@ -62,7 +64,7 @@ public class EventActivity extends AppCompatActivity {
     final private String contentType = "application/json";
     EditText Advertisemnt_name, Advertisment_date, location, description;
 
-    Button btn_adv;
+    CardView btn_adv;
     String NOTIFICATION_TITLE;
     String NOTIFICATION_MESSAGE;
     String TOPIC;

@@ -13,7 +13,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        android:src="@color/colorAccent" />
+        android:src="@drawable/updateimg" />
 
     <EditText
         android:id="@+id/signUp_username"
@@ -23,6 +23,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:hint="Username"
+        android:drawableLeft="@drawable/ic_action_username"
         android:textSize="18sp" />
 
     <EditText
@@ -32,6 +33,7 @@
         android:layout_below="@+id/signUp_username"
         android:layout_margin="10dp"
         android:hint="Email"
+        android:drawableLeft="@drawable/ic_action_email"
         android:inputType="textEmailAddress"
         android:textSize="18sp" />
 
@@ -42,6 +44,7 @@
         android:layout_below="@+id/signUp_email"
         android:layout_margin="10dp"
         android:hint="Password"
+        android:drawableLeft="@drawable/ic_action_pass"
         android:inputType="textPassword"
         android:textSize="18sp" />
 
@@ -51,8 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/signUp_password"
         android:layout_margin="10dp"
-        android:hint="Confirm-Password"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_action_pass"
         android:textSize="18sp" />
 
     <Spinner
@@ -61,13 +65,45 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/signUp_confirmPassword" />
 
-    <Button
+    <androidx.cardview.widget.CardView
         android:id="@+id/signUp_submitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/signUp_role_spinner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Sign Up" />
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        app:cardBackgroundColor="#2c318c"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textAlignment="center"
+
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!--    <Button-->
+<!--        android:id="@+id/signUp_submitBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/signUp_role_spinner"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:text="Sign Up" />-->
 
 </RelativeLayout>

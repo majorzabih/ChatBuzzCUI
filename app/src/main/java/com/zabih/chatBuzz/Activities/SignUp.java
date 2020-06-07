@@ -3,6 +3,7 @@ package com.zabih.chatBuzz.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -34,7 +35,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SignUp extends AppCompatActivity {
     private static final int IMAGE_PICK_CODE = 123;
     private EditText mUsername, mEmail, mPassword, mConfirmPassword;
-    private Button mSubmitBtn;
+    private CardView mSubmitBtn;
+//    private Button mSubmitBtn;
     private Spinner spinner;
     private FirebaseAuth mAuth;
     private CircleImageView profImage;

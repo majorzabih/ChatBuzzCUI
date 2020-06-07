@@ -3,6 +3,7 @@ package com.zabih.chatBuzz.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -40,7 +41,7 @@ public class ProfileUpdate extends AppCompatActivity {
     private static final int IMAGE_PICK_CODE = 123;
     private TextView mUsername, mEmail;
            // ..mPassword, mConfirmPassword;
-    private Button mSubmitBtn;
+    private CardView mSubmitBtn;
     private Spinner spinner;
     public  int counter=0;
     EditText mCurrentPassword,mNewPassword,moldpassword;

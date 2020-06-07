@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +31,7 @@ public class lostFragment extends Fragment {
     private List<LoastFoundModel> listData;
     private RecyclerView rv;
     private LostAdapter adapter;
-    Button btn_lost;
+    CardView btn_lost;
 
     public lostFragment() {
 

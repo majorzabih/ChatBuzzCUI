@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class hod_list extends Fragment {
 
     private FirebaseRecyclerAdapter<UserModel, UserViewHolder> mAdapter;
     private RecyclerView recyclerView;
-    private Button mSearchBtn;
+    private ImageButton mSearchBtn;
     EditText mSearchBar;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference userRef = database.getReference("users");

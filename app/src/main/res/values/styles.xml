@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#4C4CFF</item>
-        <item name="colorPrimaryDark">#4C4CFF</item>
+        <item name="colorPrimary">#2c318c</item>
+        <item name="colorPrimaryDark">#2c318c</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

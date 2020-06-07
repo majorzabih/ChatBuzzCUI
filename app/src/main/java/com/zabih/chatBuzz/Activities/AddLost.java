@@ -2,6 +2,7 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -60,7 +61,7 @@ EditText desc_textview;
 
     private final int PICK_IMAGE_REQUEST = 22;
     EditText lostItem;
-    Button upload;
+    CardView upload;
     FirebaseStorage storage;
     String valueOfEditText;
     String NOTIFICATION_TITLE;

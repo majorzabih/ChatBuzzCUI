@@ -32,14 +32,48 @@
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
             android:inputType="textFilter" />
 
-        <Button
+<!--        <Button-->
+<!--            android:id="@+id/add_chat_btn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/add_chat_editText"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="Add Chat" />-->
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/add_chat_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
             android:layout_below="@+id/add_chat_editText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="Add Chat" />
+            android:clickable="true"
+            app:cardBackgroundColor="#2c318c"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Chat Lobby"
+                    android:textAlignment="center"
+
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:textStyle="bold"></TextView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <Spinner
             android:id="@+id/admin_chat_spinner"
             android:layout_below="@+id/add_chat_btn"

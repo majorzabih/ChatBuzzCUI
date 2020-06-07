@@ -2,6 +2,7 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -46,7 +47,7 @@ import java.util.UUID;
 public class Advertisement extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 22;
     EditText eventName, eventDate;
-    Button create;
+    CardView create;
     FirebaseStorage storage;
     ImageView img_event;
     String uri;

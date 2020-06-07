@@ -2,6 +2,7 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +36,7 @@ public class AdminChatActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<AvailableChatModel, ChatViewHolder> mAdapter;
     private EditText mChatName;
     private RecyclerView recyclerView;
-    private Button mSubmitBtn;
+    private CardView mSubmitBtn;
     Spinner spinner;
 
     @Override

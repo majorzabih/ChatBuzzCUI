@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapps"
+    android:background="#292d6a"
     tools:context=".Activities.SignIn">
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
         android:layout_marginTop="293dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
+        android:textColorHint="#FFFEFE"
+        android:background="#2c318c"
         android:inputType="textEmailAddress"
-
+        android:drawableLeft="@drawable/ic_action_user"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,13 +28,16 @@
     <EditText
 
         android:id="@+id/txtpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:background="#2c318c"
         android:hint="Password"
+        android:textColorHint="#FFFEFE"
         android:inputType="textPassword"
         android:textAllCaps="true"
+        android:drawableLeft="@drawable/ic_action_lock"
         app:layout_constraintStart_toStartOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -41,33 +46,105 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
-        android:textSize="18sp"
+        android:textColor="#FFFEFE"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_signin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
-
-    <Button
-        android:id="@+id/btn_signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtpassword"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.155" />
 
-    <Button
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_signin"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:clickable="true"
+        app:cardBackgroundColor="#2c318c"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword"
+        app:layout_constraintVertical_bias="0.364">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textAlignment="center"
+
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_signin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:text="Sign In"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/txtpassword"-->
+<!--        app:layout_constraintVertical_bias="0.12" />-->
+
+    <!--    <Button-->
+<!--        android:id="@+id/btn_signup"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="23dp"-->
+<!--        android:text="Sign Up"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/btn_signin"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />-->
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/btn_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:text="Sign Up"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        app:cardBackgroundColor="#2c318c"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
         app:layout_constraintStart_toStartOf="@+id/btn_signin"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signup"
+                android:textAlignment="center"
+
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imageView"

@@ -2,6 +2,7 @@ package com.zabih.chatBuzz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,11 +28,11 @@ import com.zabih.chatBuzz.R;
 
 public class SignIn extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
+    private CardView btn_login,Btn_signup;
     public EditText mEmail, mPassword;
-    private Button mSignUpLink;
+//    private Button mSignUpLink;
     TextView mForgotPassword;
-    private Button mLoginBtn;
+//    private Button mLoginBtn;
     private FirebaseAuth mAuth;
     UserModel user;
 
@@ -64,7 +65,7 @@ public class SignIn extends AppCompatActivity {
 
             }
         });
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -115,7 +116,7 @@ public class SignIn extends AppCompatActivity {
 
         });
 
-        mSignUpLink.setOnClickListener(new View.OnClickListener() {
+        Btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -218,8 +219,8 @@ public class SignIn extends AppCompatActivity {
     private void initializations() {
         mEmail = findViewById(R.id.editText);
         mPassword = findViewById(R.id.txtpassword);
-        mSignUpLink = findViewById(R.id.btn_signup);
-        mLoginBtn = findViewById(R.id.btn_signin);
+        Btn_signup = findViewById(R.id.btn_signup);
+        btn_login = findViewById(R.id.btn_signin);
         mForgotPassword = findViewById(R.id.sign_in_forgetPassword);
         mAuth = FirebaseAuth.getInstance();
     }

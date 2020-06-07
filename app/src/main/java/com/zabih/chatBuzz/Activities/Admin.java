@@ -286,7 +286,7 @@ public class Admin extends AppCompatActivity {
                       announcementModel.setTime(currentTime);
                         mDatabase.child("Admin").child("Notification").child("Announcement").push().setValue(announcementModel);
 
-                        Toast.makeText(Admin.this, "Successfully sended", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Admin.this, "Successfully sent", Toast.LENGTH_LONG).show();
 
                         notication_text.setText("");
 

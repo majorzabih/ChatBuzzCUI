@@ -21,10 +21,11 @@
             android:layout_weight="0.7"
             android:hint="Search Users" />
 
-        <Button
+        <ImageButton
+            android:background="@drawable/ic_action_search"
             android:id="@+id/chat_tab2_searchBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/chat_tab2_searchBar"
             android:text="search" />

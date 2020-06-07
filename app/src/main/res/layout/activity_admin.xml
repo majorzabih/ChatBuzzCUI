@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="For create event click here!"
+        android:text="Create Event"
         app:layout_constraintEnd_toEndOf="@+id/btnSend"
         app:layout_constraintStart_toStartOf="@+id/btnSend"
         app:layout_constraintTop_toBottomOf="@+id/btnSend" />
@@ -50,7 +50,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Announcment"
+        android:text="Announcement"
         android:textSize="26dp"
         android:textStyle="bold"
 
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="for advertisment clcik here"
+        android:text="Create Advertisement"
         app:layout_constraintEnd_toEndOf="@+id/event_textview"
         app:layout_constraintStart_toStartOf="@+id/event_textview"
         app:layout_constraintTop_toBottomOf="@+id/event_textview" />
@@ -88,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TO upload filee click here"
+        android:text="Upload File"
         app:layout_constraintEnd_toEndOf="@+id/event_textview"
         app:layout_constraintStart_toStartOf="@+id/event_textview"
         app:layout_constraintTop_toBottomOf="@+id/adve_txt" />

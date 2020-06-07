@@ -65,18 +65,18 @@ public class UpoadFIle extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //when the user choses the file
-        if (requestCode ==                 PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             //if a file is selected
             if (data.getData() != null) {
-                //uploading the file
-                //uploadFile(data.getData());
+//                //uploading the file
+                uploadFile(data.getData());
             }else{
                 Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();
             }
         }
     }
     // UploadImage method
-    private void uploadFile() {
+    private void uploadFile(Uri data) {
         if (filePath != null) {
 
             // Code for showing progressDialog while uploading

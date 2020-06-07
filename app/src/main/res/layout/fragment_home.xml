@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapps"
+    android:background="#292d6a"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".Activities.NavDrawer"
@@ -53,22 +53,20 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:alignmentMode="alignMargins"
         android:columnCount="2"
         android:columnOrderPreserved="false"
         android:orientation="horizontal"
         android:padding="14dp"
-
-
         android:rowCount="3">
         <!-- row 1 -->
         <!-- column 1 -->
         <androidx.cardview.widget.CardView
             android:id="@+id/dashboard_notifications"
-            android:layout_width="5dp"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
