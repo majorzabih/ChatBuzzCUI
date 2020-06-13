@@ -105,168 +105,115 @@ public class Admin extends AppCompatActivity {
             public void onClick(View v) {
                 if(notication_text.getText().toString().isEmpty())
                 {
-                    Toast.makeText(Admin.this, "please fill form", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Admin.this, "Text field empty!", Toast.LENGTH_LONG).show();
                 }
-                TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
-                //            text = spinner.getSelectedItem().toString();
-             //   NOTIFICATION_TITLE="Faculty";
-                //
-                //      NOTIFICATION_TITLE = "Announcement";
-                NOTIFICATION_MESSAGE = notication_text.getText().toString();
-                valueOfEditText = notication_text.getText().toString();
-                JSONObject notification = new JSONObject();
-                JSONObject notifcationBody = new JSONObject();
+                else {
+                    TOPIC = "/topics/userABC"; //topic must match with what the receiver subscribed to
+                    //            text = spinner.getSelectedItem().toString();
+                    //   NOTIFICATION_TITLE="Faculty";
+                    //
+                    //      NOTIFICATION_TITLE = "Announcement";
+                    NOTIFICATION_MESSAGE = notication_text.getText().toString();
+                    valueOfEditText = notication_text.getText().toString();
+                    JSONObject notification = new JSONObject();
+                    JSONObject notifcationBody = new JSONObject();
 
 
+                    if (spinner.getSelectedItem().toString().equals("Faculty")) {
+                        NOTIFICATION_TITLE = "Faculty";
 
+                        //          sendNotification(notification,"Faculty");
 
+                    } else if (spinner.getSelectedItem().toString().equals("Student")) {
+                        NOTIFICATION_TITLE = "Student";
+                        //            sendNotification(notification,"Student");
 
+                    } else if (spinner.getSelectedItem().toString().equals("Sports")) {
+                        //                  NOTIFICATION_TITLE="Sports";
+                        NOTIFICATION_TITLE = "Sports";
+                        //              sendNotification(notification,"Sports");
 
-                if (spinner.getSelectedItem().toString().equals("Faculty")) {
-                    NOTIFICATION_TITLE="Faculty";
+                    } else if (spinner.getSelectedItem().toString().equals("Public")) {
+                        //                NOTIFICATION_TITLE="Public";
+                        NOTIFICATION_TITLE = "public";
+                        //                sendNotification(notification,"Public");
 
-          //          sendNotification(notification,"Faculty");
+                    } else if (spinner.getSelectedItem().toString().equals("FYP")) {
+                        //              NOTIFICATION_TITLE="FYP";
+                        NOTIFICATION_TITLE = "FYP";
+                        //                  sendNotification(notification,"FYP");
 
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Student")) {
-                    NOTIFICATION_TITLE="Student";
-        //            sendNotification(notification,"Student");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Sports")) {
-                    //                  NOTIFICATION_TITLE="Sports";
-                    NOTIFICATION_TITLE="Sports";
-      //              sendNotification(notification,"Sports");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Public")) {
-                    //                NOTIFICATION_TITLE="Public";
-                    NOTIFICATION_TITLE="public";
-    //                sendNotification(notification,"Public");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("FYP")) {
-                    //              NOTIFICATION_TITLE="FYP";
-                    NOTIFICATION_TITLE="FYP";
-  //                  sendNotification(notification,"FYP");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Department")) {
-                    //            NOTIFICATION_TITLE="Department";
-                    NOTIFICATION_TITLE="Department";
+                    } else if (spinner.getSelectedItem().toString().equals("Department")) {
+                        //            NOTIFICATION_TITLE="Department";
+                        NOTIFICATION_TITLE = "Department";
 //                    sendNotification(notification,"Department");
 
-                }
+                    } else if (spinner.getSelectedItem().toString().equals("Emergency")) {
+                        //          NOTIFICATION_TITLE="Emergency";
+                        NOTIFICATION_TITLE = "Emergency";
+                        //sendNotification(notification,"Emergency");
 
-                else
+                    } else if (spinner.getSelectedItem().toString().equals("Hod")) {
+                        //        NOTIFICATION_TITLE="Hod";
+                        NOTIFICATION_TITLE = "Hod";
+                        //sendNotification(notification,"Hod");
 
-                if (spinner.getSelectedItem().toString().equals("Emergency")) {
-                    //          NOTIFICATION_TITLE="Emergency";
-                    NOTIFICATION_TITLE="Emergency";
-                    //sendNotification(notification,"Emergency");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Hod")) {
-                    //        NOTIFICATION_TITLE="Hod";
-                    NOTIFICATION_TITLE="Hod";
-                    //sendNotification(notification,"Hod");
-
-                }
+                    }
 
 
+                    try {
+                        notifcationBody.put("title", NOTIFICATION_TITLE);
+                        notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                        notification.put("to", TOPIC);
+                        notification.put("data", notifcationBody);
+                    } catch (JSONException e) {
+                        Log.e(TAG, "onCreate: " + e.getMessage());
+                    }
 
 
+                    NOTIFICATION_TITLE = null;
+                    if (spinner.getSelectedItem().toString().equals("Faculty")) {
 
+                        sendNotification(notification, "Faculty");
 
+                    } else if (spinner.getSelectedItem().toString().equals("Student")) {
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Student");
 
+                    } else if (spinner.getSelectedItem().toString().equals("Sports")) {
+                        //                  NOTIFICATION_TITLE="Sports";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Sports");
 
-                try {
-                    notifcationBody.put("title", NOTIFICATION_TITLE);
-                    notifcationBody.put("message", NOTIFICATION_MESSAGE);
+                    } else if (spinner.getSelectedItem().toString().equals("Public")) {
+                        //                NOTIFICATION_TITLE="Public";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Public");
 
-                    notification.put("to", TOPIC);
-                    notification.put("data", notifcationBody);
-                } catch (JSONException e) {
-                    Log.e(TAG, "onCreate: " + e.getMessage());
-                }
+                    } else if (spinner.getSelectedItem().toString().equals("FYP")) {
+                        //              NOTIFICATION_TITLE="FYP";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "FYP");
 
+                    } else if (spinner.getSelectedItem().toString().equals("Department")) {
+                        //            NOTIFICATION_TITLE="Department";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Department");
 
-                NOTIFICATION_TITLE=null;
-                if (spinner.getSelectedItem().toString().equals("Faculty")) {
+                    } else if (spinner.getSelectedItem().toString().equals("Emergency")) {
+                        //          NOTIFICATION_TITLE="Emergency";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Emergency");
 
-                    sendNotification(notification,"Faculty");
+                    } else if (spinner.getSelectedItem().toString().equals("Hod")) {
+                        //        NOTIFICATION_TITLE="Hod";
+                        NOTIFICATION_TITLE = "";
+                        sendNotification(notification, "Hod");
 
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Student")) {
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Student");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Sports")) {
-  //                  NOTIFICATION_TITLE="Sports";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Sports");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Public")) {
-    //                NOTIFICATION_TITLE="Public";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Public");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("FYP")) {
-      //              NOTIFICATION_TITLE="FYP";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"FYP");
+                    }
 
                 }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Department")) {
-        //            NOTIFICATION_TITLE="Department";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Department");
-
-                }
-
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Emergency")) {
-          //          NOTIFICATION_TITLE="Emergency";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Emergency");
-
-                }
-                else
-
-                if (spinner.getSelectedItem().toString().equals("Hod")) {
-            //        NOTIFICATION_TITLE="Hod";
-                    NOTIFICATION_TITLE="";
-                    sendNotification(notification,"Hod");
-
-                }
-
-
             }
         });
     }
