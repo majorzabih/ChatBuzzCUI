@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Faculty"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +27,8 @@
 
         android:id="@+id/btn_student"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -39,7 +42,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_shape"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_marginTop="8dp"
         android:text="FYP"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +55,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_shape"
         android:textColor="#fff"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_marginTop="8dp"
         android:text="Emergency"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +66,8 @@
     <Button
         android:background="@drawable/button_shape"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +81,8 @@
         android:layout_width="wrap_content"
         android:background="@drawable/button_shape"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="HOD"
@@ -89,7 +97,8 @@
         android:text="Sports"
         android:background="@drawable/button_shape"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_hod" />
 
@@ -97,7 +106,8 @@
         android:id="@+id/button"
         android:background="@drawable/button_shape"
         android:textColor="#fff"
-
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

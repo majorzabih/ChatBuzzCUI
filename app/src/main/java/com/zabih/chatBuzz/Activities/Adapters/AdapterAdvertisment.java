@@ -33,7 +33,7 @@ public class AdapterAdvertisment extends RecyclerView.Adapter<AdapterAdvertismen
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventlist, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.advertiselist, parent, false);
         return new ViewHolder(view);
     }
 
@@ -71,8 +71,8 @@ holder.eventBy.setText(ld.getCreatedBy());
 
         public ViewHolder(View mView) {
             super(mView);
-            parent=mView.findViewById(R.id.ebent_parent);
-            img=mView.findViewById(R.id.eventlist_image);
+            parent=mView.findViewById(R.id.advert);
+            img=mView.findViewById(R.id.imageView);
             //   eventDate = mView.findViewById(R.id.event_date);
 
             eventname = mView.findViewById(R.id.eventist_name_txt);

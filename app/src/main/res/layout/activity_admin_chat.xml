@@ -49,6 +49,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="#2c318c"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
