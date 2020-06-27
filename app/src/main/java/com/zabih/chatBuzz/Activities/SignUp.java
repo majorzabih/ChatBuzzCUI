@@ -80,7 +80,7 @@ public class SignUp extends AppCompatActivity {
 
                         if ((mPassword.getText().toString().equals(mConfirmPassword.getText().toString()))) {
                             registerNewUser(mEmail.getText().toString(), mPassword.getText().toString(),
-                                    mUsername.getText().toString());
+                                    mUsername.getText().toString().toUpperCase());
                         } else {
                             mPassword.setText("");
                             mConfirmPassword.setText("");
@@ -94,14 +94,14 @@ public class SignUp extends AppCompatActivity {
                     }
                 } else if (spinner.getSelectedItem().toString().equals("Student")) {
                     if (vvv.equals("kp.ude.stasmoc")) {
-                        mEmail.setError("Please Enter Email id");
+                        mEmail.setError("Please Enter Valid Email id");
                         mEmail.requestFocus();
 
 //
 
                     } else if ((mPassword.getText().toString().equals(mConfirmPassword.getText().toString()))) {
                         registerNewUser(mEmail.getText().toString(), mPassword.getText().toString(),
-                                mUsername.getText().toString());
+                                mUsername.getText().toString().toUpperCase());
                     } else {
                         mPassword.setText("");
                         mConfirmPassword.setText("");
@@ -122,7 +122,7 @@ public class SignUp extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             addUserToFbDatabase(user, email, username);
-                            Toast.makeText(SignUp.this, "User created successfully", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignUp.this, "User created successfully", Toast.LENGTH_SHORT).show();
 String varr= String.valueOf(spinner.getSelectedItem().toString());
                             if (spinner.getSelectedItem().toString().equals("Faculty")) {
 

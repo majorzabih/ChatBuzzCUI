@@ -14,6 +14,15 @@
         android:layout_margin="20dp"
         android:hint="Enter Phone Number" />
 
+    <Button
+        android:id="@+id/btn_generate_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColorHint="#fff"
+        android:background="#2c318c"
+        android:hint="Generate OTP" />
+
     <EditText
         android:id="@+id/et_otp"
         android:layout_width="match_parent"
@@ -23,20 +32,13 @@
         android:hint="Enter Verification Code" />
 
     <Button
-        android:id="@+id/btn_generate_otp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@color/colorAccent"
-        android:hint="Generate OTP" />
-
-    <Button
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@color/colorAccent"
+        android:background="#2c318c"
+        android:textColorHint="#fff"
         android:hint="Verifiy" />
 
 </LinearLayout>

@@ -44,11 +44,12 @@ public class PhoneAuth extends AppCompatActivity {
                 phoneNumber = etPhoneNumber.getText().toString();
 
 
-                if(etPhoneNumber.getText().toString().isEmpty())
+                if(etPhoneNumber.getText().toString().isEmpty()|| phoneNumber.length() < 10)
                 {
 
-                    etPhoneNumber.setText("Please enter phone no.");
+                    etPhoneNumber.setError("Valid Phone number is required");
                     etPhoneNumber.requestFocus();
+                    return;
                 }
                 else
 
@@ -74,14 +75,14 @@ public class PhoneAuth extends AppCompatActivity {
                 if(etPhoneNumber.getText().toString().isEmpty())
                 {
 
-                    etPhoneNumber.setText("Please enter phone no.");
+                    etPhoneNumber.setText("Please Enter phone no.");
                     etPhoneNumber.requestFocus();
                 }
 
 
                 if (etOTP.getText().toString().isEmpty()) {
 
-                    etOTP.setError("Please Enter Otp");
+                    etOTP.setError("Please Enter OTP");
                     etOTP.requestFocus();
 
                 }
@@ -135,26 +136,10 @@ public class PhoneAuth extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
 
-
-
-
-
-
-
                 startActivity(new Intent(PhoneAuth.this, NavDrawer.class));
 
-
-
-
-
-
-
-
-
-
                     Toast.makeText(PhoneAuth.this, "verification Successful", Toast.LENGTH_SHORT).show();
-
-
+                    finish();
             }
 
             @Override

@@ -138,7 +138,7 @@ public class HomeFragment extends Fragment {
                     mWelcomeText.setText("Welcome: "+myUserInfo.getUsername());
                     if (myUserInfo.getRole().equals("hod")) {
                         mAdmin2.setVisibility(View.VISIBLE);
-                        mAdminTextView2.setVisibility(View.VISIBLE);
+                        mAdmin.setVisibility(View.VISIBLE);
                     }
                     if (myUserInfo.getRole().equals("admin"))
                     {
