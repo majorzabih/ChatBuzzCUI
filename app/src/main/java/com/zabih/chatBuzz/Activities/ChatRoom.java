@@ -74,7 +74,7 @@ public class ChatRoom extends AppCompatActivity {
             public void onClick(View v) {
                 if(!(mMessage.getText().toString().equals("") && image_uri==null)) {
                     String s = mMessage.getText().toString();
-                    List<String> words = Arrays.asList("fuck","asshole","cunt","dick","penis","gandu","bhenchod","dalla","chutya","chutia","harami","phudda","madrchod","shit");
+                    List<String> words = Arrays.asList("fuck","asshole","cunt","dick","penis","gandu","bhenchod","dalla","chutiya","chutia","harami","phudda","madrchod","shit");
                     for (String word : words) {
                         Pattern rx = Pattern.compile("\\b" + word + "\\b", Pattern.CASE_INSENSITIVE);
                         s = rx.matcher(s).replaceAll(new String(new char[word.length()]).replace('\0', '*'));

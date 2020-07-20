@@ -209,6 +209,7 @@ public class student_list extends Fragment {
         BlockedModel bm=new BlockedModel();
         bm.setId(userID);
         blockRef.push().setValue(bm);
+        Toast.makeText(getContext(), "User blocked!", Toast.LENGTH_SHORT).show();
     }
 
     private void initializations() {
