@@ -120,6 +120,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 // startActivity(new Intent(SignIn.this, PhoneAuth.class));
 
                 startActivity(new Intent(SignIn.this, SignUp.class));

@@ -8,6 +8,8 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,20 +17,35 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.apache.poi.hssf.usermodel.HSSFComment;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.zabih.chatBuzz.Activities.Models.UserModel;
 import com.zabih.chatBuzz.R;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,12 +63,17 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+    private HSSFSheet worksheet;
+    private HSSFWorkbook workbook;
+    private static File localFile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initializations();
+        downloadFile();
         profImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,19 +115,30 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(SignUp.this, "Email don't match!", Toast.LENGTH_SHORT).show();
                     }
                 } else if (spinner.getSelectedItem().toString().equals("Student")) {
-                    if (vvv.equals("kp.ude.stasmoc")) {
-                        mEmail.setError("Please Enter Valid Email id");
-                        mEmail.requestFocus();
+                    String username = mUsername.getText().toString();
+                    //Username check
+                    boolean found = false;
+                    for (String regNo: ReadFile()){
+                        if (username.equalsIgnoreCase(regNo)) {
+                            found = true;
+                            if (vvv.equals("kp.ude.stasmoc")) {
+                                mEmail.setError("Please Enter Valid Email id");
+                                mEmail.requestFocus();
 
-//
+    //
 
-                    } else if ((mPassword.getText().toString().equals(mConfirmPassword.getText().toString()))) {
-                        registerNewUser(mEmail.getText().toString(), mPassword.getText().toString(),
-                                mUsername.getText().toString().toUpperCase());
-                    } else {
-                        mPassword.setText("");
-                        mConfirmPassword.setText("");
-                        Toast.makeText(SignUp.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+                            } else if ((mPassword.getText().toString().equals(mConfirmPassword.getText().toString()))) {
+                                registerNewUser(mEmail.getText().toString(), mPassword.getText().toString(),
+                                        username.toUpperCase());
+                            } else {
+                                mPassword.setText("");
+                                mConfirmPassword.setText("");
+                                Toast.makeText(SignUp.this, "Passwords don't match!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                    if (!found){
+                        Toast.makeText(SignUp.this, "Please enter valid username!", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -205,6 +238,7 @@ String varr= String.valueOf(spinner.getSelectedItem().toString());
         });
     }
 
+
     private void pickImageFromGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -281,6 +315,56 @@ String varr= String.valueOf(spinner.getSelectedItem().toString());
                 });
     }
 
+    private void downloadFile() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference storageRef = storage.getReference();
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://smartapp-25b81.appspot.com/Uploads/");
+        StorageReference  islandRef = storageRef.child("regno.xls");
 
+        File rootPath = new File(Environment.getExternalStorageDirectory(), "regno.xls");
+//        if(!rootPath.exists()) {
+//            rootPath.mkdirs();
+//        }
+
+        localFile = new File(rootPath,"");
+
+        try {
+            localFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Log.e("firebase ",";local tem file created  created " +localFile.toString());
+                //  updateDb(timestamp,localFile.toString(),position);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("firebase ",";local tem file not created  created " +exception.toString());
+            }
+        });
+    }
+
+    private ArrayList<String> ReadFile(){
+        ArrayList<String> validRegNo = new ArrayList<>();
+        try {
+            POIFSFileSystem myFileSystem = new POIFSFileSystem(new FileInputStream(localFile));
+            workbook = new HSSFWorkbook(myFileSystem);
+            worksheet = workbook.getSheetAt(0);
+            for (Row row: worksheet){
+                for (Cell cell: row){
+                    String cellVal = cell.getStringCellValue();
+                    validRegNo.add(cellVal);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        localFile.delete();
+        return validRegNo;
+    }
 
 }

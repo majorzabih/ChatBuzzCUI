@@ -75,7 +75,7 @@ public class UpoadFIle extends AppCompatActivity {
             }
         });
     }
-    String filename =System.currentTimeMillis()+"";
+    String filename ="regno.xls";
     private void uploadFile(Uri csvUri) {
 
         progressDialog=new ProgressDialog(this);
@@ -130,7 +130,7 @@ public class UpoadFIle extends AppCompatActivity {
     private void selectCSV() {
         Intent intent=new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("text/comma-separated-values");
+        intent.setType("application/vnd.ms-excel");
         startActivityForResult(intent,86);
     }
 
