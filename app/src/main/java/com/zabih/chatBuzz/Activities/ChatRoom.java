@@ -167,8 +167,8 @@ public class ChatRoom extends AppCompatActivity {
     }
 
     private void sendMessageToFb(final String message) {
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HH:mm aa", Locale.getDefault()).format(new Date());
         MessageModel mssg = new MessageModel();
         mssg.setMessage(message);
         mssg.setTime(currentTime);

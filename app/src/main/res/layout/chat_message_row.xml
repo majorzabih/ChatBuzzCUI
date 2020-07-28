@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
+        android:layout_margin="8dp"
         android:background="#ffff"
-        android:padding="10dp">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/chat_message_row_username"
@@ -45,8 +45,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/chat_message_row_message"
+            android:layout_toRightOf="@+id/chat_message_row_date"
             android:text="11:00"
+            android:layout_marginLeft="5dp"
             android:textColor="#000" />
+        <TextView
+            android:id="@+id/chat_message_row_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text=""
+            android:textColor="#000" />
+
     </RelativeLayout>
 
 </RelativeLayout>

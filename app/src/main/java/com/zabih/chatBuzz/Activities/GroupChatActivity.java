@@ -126,8 +126,8 @@ public class GroupChatActivity extends AppCompatActivity {
         final MessageModel message = new MessageModel();
         message.setMessage(text);
         message.setSender(myID);
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HH:mm aa", Locale.getDefault()).format(new Date());
         message.setDate(currentDate);
         message.setTime(currentTime);
         message.setUsername(myUserInfo.getUsername());
@@ -227,6 +227,7 @@ public class GroupChatActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull MessageViewHolder holder, int position, @NonNull MessageModel model) {
                 holder.mMessage.setText(model.getMessage());
                 holder.mTime.setText(model.getTime());
+                holder.mDate.setText(model.getDate());
                 holder.mUsername.setText(model.getUsername());
                 if (!model.getImage_url().equals("")) {
                     Glide.with(GroupChatActivity.this).load(model.getImage_url()).into(holder.mImage);
@@ -317,10 +318,12 @@ public class GroupChatActivity extends AppCompatActivity {
 
         TextView mMessage;
         TextView mTime;
+        TextView mDate;
         TextView mUsername;
         ImageView mImage;
         MessageViewHolder(@NonNull View itemView) {
             super(itemView);
+            mDate = itemView.findViewById(R.id.chat_message_row_date);
             mMessage = itemView.findViewById(R.id.chat_message_row_message);
             mTime = itemView.findViewById(R.id.chat_message_row_time);
             mUsername = itemView.findViewById(R.id.chat_message_row_username);

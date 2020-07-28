@@ -50,6 +50,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         MessageModel messageModel = mChat.get(position);
         holder.mMessage.setText(messageModel.getMessage());
         holder.mTime.setText(messageModel.getTime());
+        holder.mDate.setText(messageModel.getDate());
         holder.mUsername.setText(messageModel.getUsername());
         if (!messageModel.getImage_url().equals("")) {
             Glide.with(context).load(messageModel.getImage_url()).into(holder.imageView);
@@ -81,9 +82,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         TextView mTime;
         TextView mUsername;
         ImageView imageView;
+        TextView mDate;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+            mDate = itemView.findViewById(R.id.chat_message_row_date);
             mMessage = itemView.findViewById(R.id.chat_message_row_message);
             mTime = itemView.findViewById(R.id.chat_message_row_time);
             mUsername=itemView.findViewById(R.id.chat_message_row_username);
