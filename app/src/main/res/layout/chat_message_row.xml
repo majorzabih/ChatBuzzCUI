@@ -48,6 +48,7 @@
             android:layout_toRightOf="@+id/chat_message_row_date"
             android:text="11:00"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:textColor="#000" />
         <TextView
             android:id="@+id/chat_message_row_date"

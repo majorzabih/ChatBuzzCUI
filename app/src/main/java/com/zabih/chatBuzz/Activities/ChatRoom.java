@@ -21,10 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -32,6 +34,12 @@ import com.google.firebase.storage.UploadTask;
 import com.zabih.chatBuzz.Activities.Adapters.MessageAdapter;
 import com.zabih.chatBuzz.Activities.Models.MessageModel;
 import com.zabih.chatBuzz.Activities.Models.UserModel;
+import com.zabih.chatBuzz.Activities.Notifications.APIService;
+import com.zabih.chatBuzz.Activities.Notifications.Client;
+import com.zabih.chatBuzz.Activities.Notifications.Data;
+import com.zabih.chatBuzz.Activities.Notifications.MyResponse;
+import com.zabih.chatBuzz.Activities.Notifications.Sender;
+import com.zabih.chatBuzz.Activities.Notifications.Token;
 import com.zabih.chatBuzz.R;
 
 import java.text.SimpleDateFormat;
@@ -41,6 +49,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChatRoom extends AppCompatActivity {
     Toolbar toolbar;
@@ -57,12 +69,21 @@ public class ChatRoom extends AppCompatActivity {
     private UserModel otherUser;
     private Uri image_uri,finalUri=null;
     private static final int IMAGE_PICK_CODE = 123;
+    String userid;
+    FirebaseUser fuser;
+    APIService apiService;
+    boolean notify=false;
+    Intent intent;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         initializations();
+
+        apiService= Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
+
         mImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +93,8 @@ public class ChatRoom extends AppCompatActivity {
         mSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notify=true;
+                message= mMessage.getText().toString();
                 if(!(mMessage.getText().toString().equals("") && image_uri==null)) {
                     String s = mMessage.getText().toString();
                     List<String> words = Arrays.asList("fuck","asshole","cunt","dick","penis","gandu","bhenchod","dalla","chutiya","chutia","harami","phudda","madrchod","shit");
@@ -88,10 +111,72 @@ public class ChatRoom extends AppCompatActivity {
                     Toast.makeText(ChatRoom.this, "Nothing to send!", Toast.LENGTH_SHORT).show();
 
                 }
+
+//                final String msg= message;
+//                DatabaseReference reference=FirebaseDatabase.getInstance().getReference("users").child(myID);
+//                reference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        UserModel userModel =dataSnapshot.getValue(UserModel.class);
+//                        if(notify) {
+//                            sendNotification(otherUser.getUserID(), userModel.getUsername(),msg);
+//                        }
+//                        notify=false;
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
             }
         });
+
+
         readMessages(myID, otherUser.getUserID());
 
+
+    }
+
+    private void sendNotification(String receiver, final String username, final String message){
+        DatabaseReference tokens= FirebaseDatabase.getInstance().getReference("Tokens");
+        Query query=tokens.orderByKey().equalTo(receiver);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Token token=snapshot.getValue(Token.class);
+//                    intent=getIntent();
+//                    String userid=intent.getStringExtra("otherUser");
+                    Data data=new Data(myID,R.mipmap.ic_launcher,username+": "+ message,"New Message",
+                            otherUser.getUserID());
+
+                    Sender sender=new Sender(data,token.getToken());
+
+                    apiService.sendNotification(sender)
+                            .enqueue(new Callback<MyResponse>() {
+                                @Override
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if(response.code()==200){
+                                        if(response.body().success!=1){
+                                            Toast.makeText(ChatRoom.this, "Failed!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
+
+                                }
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -187,6 +272,24 @@ public class ChatRoom extends AppCompatActivity {
         mMessage.setText("");
         finalUri=null;
         image_uri=null;
+
+        final String msg= message;
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("users").child(myID);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserModel userModel =dataSnapshot.getValue(UserModel.class);
+                if(notify) {
+                    sendNotification(otherUser.getUserID(), userModel.getUsername(),msg);
+                }
+                notify=false;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -202,6 +305,10 @@ public class ChatRoom extends AppCompatActivity {
         lm.setStackFromEnd(true);
         recyclerView.setLayoutManager(lm);
         recyclerView.setHasFixedSize(true);
+
+        intent = getIntent();
+        userid = intent.getStringExtra("userid");
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         otherUser = (UserModel) getIntent().getSerializableExtra("otherUser");
         mToolbarText.setText(otherUser.getUsername());

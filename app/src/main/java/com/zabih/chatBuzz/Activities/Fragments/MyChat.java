@@ -20,10 +20,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.zabih.chatBuzz.Activities.Adapters.MessageListAdapter;
 import com.zabih.chatBuzz.Activities.ChatRoom;
 import com.zabih.chatBuzz.Activities.Models.MessageModel;
 import com.zabih.chatBuzz.Activities.Models.UserModel;
+import com.zabih.chatBuzz.Activities.Notifications.Token;
 import com.zabih.chatBuzz.R;
 
 import java.util.ArrayList;
@@ -62,6 +64,7 @@ public class MyChat extends Fragment implements MessageListAdapter.onUserListene
         super.onViewCreated(view, savedInstanceState);
         initializations();
         function();
+        updateToken(FirebaseInstanceId.getInstance().getToken());
     }
 
     private void function() {
@@ -89,7 +92,15 @@ public class MyChat extends Fragment implements MessageListAdapter.onUserListene
 
             }
         };
+
         chatRef.addValueEventListener(chatListener);
+    }
+
+    private void updateToken(String token){
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token1=new Token(token);
+        reference.child(myID).setValue(token1);
+
     }
 
     private void readChats() {
