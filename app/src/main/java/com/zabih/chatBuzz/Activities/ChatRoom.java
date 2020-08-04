@@ -46,6 +46,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -75,6 +76,9 @@ public class ChatRoom extends AppCompatActivity {
     boolean notify=false;
     Intent intent;
     String message;
+    DatabaseReference reference;
+
+    ValueEventListener seenListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,8 +138,34 @@ public class ChatRoom extends AppCompatActivity {
 
 
         readMessages(myID, otherUser.getUserID());
+        seenMessage(otherUser.getUserID());
 
+    }
 
+    private void seenMessage(final String userid){
+        seenListener=chatRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    MessageModel messageModel=snapshot.getValue(MessageModel.class);
+                    if(messageModel.getReceiver().equals(myID) && messageModel.getSender().equals(userid)){
+
+//                        MessageModel mssg = new MessageModel();
+//                        mssg.setSeen(true);
+//                        chatRef.push().setValue(mssg);
+                        HashMap<String,Object> hashMap=new HashMap<>();
+                        hashMap.put("isseen",true);
+                        snapshot.getRef().updateChildren(hashMap);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void sendNotification(String receiver, final String username, final String message){
@@ -254,21 +284,38 @@ public class ChatRoom extends AppCompatActivity {
     private void sendMessageToFb(final String message) {
         String currentDate = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
         String currentTime = new SimpleDateFormat("HH:mm aa", Locale.getDefault()).format(new Date());
-        MessageModel mssg = new MessageModel();
-        mssg.setMessage(message);
-        mssg.setTime(currentTime);
-        mssg.setDate(currentDate);
-        mssg.setReceiver(otherUser.getUserID());
-        mssg.setSender(myID);
+//        MessageModel mssg = new MessageModel();
+//        mssg.setMessage(message);
+//        mssg.setTime(currentTime);
+//        mssg.setDate(currentDate);
+//        mssg.setReceiver(otherUser.getUserID());
+//        mssg.setSender(myID);
+//        if (finalUri!=null) {
+//            mssg.setImage_url(finalUri.toString());
+//        } else {
+//            mssg.setImage_url("");
+//        }
+//        if (mMessage.getText().toString().equals(""))
+//            mssg.setMessage("");
+
+//        chatRef.push().setValue(mssg);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", myID);
+        hashMap.put("time", currentTime);
+        hashMap.put("date", currentDate);
+        hashMap.put("receiver", otherUser.getUserID());
+        hashMap.put("message", message);
+        hashMap.put("isseen", false);
         if (finalUri!=null) {
-            mssg.setImage_url(finalUri.toString());
+            hashMap.put("image_url",finalUri.toString());
         } else {
-            mssg.setImage_url("");
+            hashMap.put("image_url","");
         }
         if (mMessage.getText().toString().equals(""))
-            mssg.setMessage("");
+            hashMap.put("message"," ");
 
-        chatRef.push().setValue(mssg);
+        chatRef.push().setValue(hashMap);
         mMessage.setText("");
         finalUri=null;
         image_uri=null;
@@ -325,8 +372,11 @@ public class ChatRoom extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (chatListener != null)
+        if (chatListener != null){
             chatRef.removeEventListener(chatListener);
+        }
+        chatRef.removeEventListener(seenListener);
+
     }
 
     @Override

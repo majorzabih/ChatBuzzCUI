@@ -57,6 +57,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }else {
             holder.imageView.setVisibility(View.GONE);
         }
+        if(position==mChat.size()-1){
+            if(messageModel.isIsseen()){
+                holder.IsSeen.setText("Seen");
+            } else {
+                holder.IsSeen.setText("Delivered");
+            }
+        } else {
+            holder.IsSeen.setVisibility(View.GONE);
+        }
 
     }
 
@@ -83,9 +92,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         TextView mUsername;
         ImageView imageView;
         TextView mDate;
+        TextView IsSeen;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+            IsSeen = itemView.findViewById(R.id.txt_seen);
             mDate = itemView.findViewById(R.id.chat_message_row_date);
             mMessage = itemView.findViewById(R.id.chat_message_row_message);
             mTime = itemView.findViewById(R.id.chat_message_row_time);

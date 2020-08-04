@@ -22,6 +22,7 @@ import com.zabih.chatBuzz.Activities.Adapters.ViewPagerAdapter;
 import com.zabih.chatBuzz.Activities.Fragments.GroupChatList;
 import com.zabih.chatBuzz.Activities.Fragments.MyChat;
 import com.zabih.chatBuzz.Activities.Fragments.SearchTab;
+import com.zabih.chatBuzz.Activities.Models.MessageModel;
 import com.zabih.chatBuzz.R;
 
 public class Chat extends AppCompatActivity {
@@ -30,12 +31,13 @@ public class Chat extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     int flag = 0;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.child("users").child(uid).child("role").equalTo("HOD").addValueEventListener(new ValueEventListener() {
@@ -101,13 +103,41 @@ public class Chat extends AppCompatActivity {
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragment(new GroupChatList(), "Group chat");
-        viewPagerAdapter.addFragment(new MyChat(), "My Chats");
-        viewPagerAdapter.addFragment(new SearchTab(), "Search");
+    private void setupViewPager(final ViewPager viewPager) {
+//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPager.setAdapter(viewPagerAdapter);
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("chatRef");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+                int unread = 0;
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    MessageModel messageModel = snapshot.getValue(MessageModel.class);
+                    if(messageModel.getReceiver().equals(uid) && !messageModel.isIsseen()){
+                        unread++;
+                    }
+
+                }
+
+                if(unread == 0){
+                    viewPagerAdapter.addFragment(new MyChat(), "My Chats");
+                } else {
+                    viewPagerAdapter.addFragment(new MyChat(), "("+unread+") My Chats");
+                }
+                viewPagerAdapter.addFragment(new GroupChatList(), "Group chat");
+
+                viewPagerAdapter.addFragment(new SearchTab(), "Search");
+
+                viewPager.setAdapter(viewPagerAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
     }
